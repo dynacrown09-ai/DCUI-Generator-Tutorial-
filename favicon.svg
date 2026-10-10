@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+  <rect width="64" height="64" rx="10" fill="#0b1220"/>
+  <g fill="#1b2a4a">
+    <rect x="0" y="8" width="64" height="2"/>
+    <rect x="0" y="24" width="64" height="2"/>
+    <rect x="0" y="40" width="64" height="2"/>
+    <rect x="0" y="56" width="64" height="2"/>
+    <rect x="8" y="0" width="2" height="64"/>
+    <rect x="24" y="0" width="2" height="64"/>
+    <rect x="40" y="0" width="2" height="64"/>
+    <rect x="56" y="0" width="2" height="64"/>
+  </g>
+  <!-- pixel crown -->
+  <g fill="#ffd24a">
+    <rect x="14" y="18" width="6" height="6"/>
+    <rect x="29" y="14" width="6" height="6"/>
+    <rect x="44" y="18" width="6" height="6"/>
+    <rect x="14" y="24" width="36" height="6"/>
+    <rect x="14" y="30" width="36" height="6"/>
+  </g>
+  <g fill="#b8860b">
+    <rect x="14" y="34" width="36" height="4"/>
+  </g>
+  <g fill="#7c4dff">
+    <rect x="20" y="30" width="4" height="4"/>
+    <rect x="38" y="30" width="4" height="4"/>
+  </g>
+  <!-- code brackets -->
+  <g fill="#4dd2ff">
+    <rect x="20" y="42" width="4" height="4"/>
+    <rect x="16" y="46" width="4" height="4"/>
+    <rect x="20" y="50" width="4" height="4"/>
+    <rect x="40" y="42" width="4" height="4"/>
+    <rect x="44" y="46" width="4" height="4"/>
+    <rect x="40" y="50" width="4" height="4"/>
+    <rect x="32" y="42" width="4" height="12"/>
+  </g>
+</svg>

@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DYNACROWN Visual Script UI Editor — Full Tutorial &amp; Manual</title>
+<meta name="description" content="Design Minecraft Bedrock addon Script UI visually on a blueprint canvas, then copy the finished code as TypeScript or JavaScript with one click. The complete tutorial and developer manual for the DYNACROWN Visual Script UI Editor.">
+<meta name="theme-color" content="#0b1220">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://dynacrown09-ai.github.io/DCUI-Generator-Tutorial-/">
+
+<!-- Open Graph / share cards -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DYNACROWN">
+<meta property="og:title" content="DYNACROWN Visual Script UI Editor — Full Tutorial &amp; Manual">
+<meta property="og:description" content="Blueprint-style visual node studio for Minecraft Bedrock Script UI (@minecraft/server-ui). Wire triggers, forms, controls and actions, preview live, export TypeScript / JavaScript / .mcaddon.">
+<meta property="og:url" content="https://dynacrown09-ai.github.io/DCUI-Generator-Tutorial-/">
+<meta property="og:image" content="favicon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DYNACROWN Visual Script UI Editor — Full Tutorial &amp; Manual">
+<meta name="twitter:description" content="Blueprint-style visual node studio for Minecraft Bedrock Script UI. Preview live, export TypeScript / JavaScript / .mcaddon.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "DYNACROWN Visual Script UI Editor — Full Tutorial & Manual",
+  "description": "Design Minecraft Bedrock addon Script UI visually on a blueprint canvas, then copy the finished code as TypeScript or JavaScript with one click.",
+  "about": "Minecraft Bedrock Edition addon development with @minecraft/server-ui",
+  "inLanguage": "en"
+}
+</script>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- ============================================================ top bar -->
+<header class="topbar">
+  <button class="icon-btn" id="menuBtn" aria-label="Open table of contents" aria-expanded="false">☰</button>
+
+  <a class="brand" href="#top">
+    <img src="favicon.svg" alt="" width="30" height="30">
+    <span class="brand-text">
+      <span class="brand-name">DYNACROWN</span>
+      <span class="brand-sub">Visual Script UI Editor</span>
+    </span>
+  </a>
+
+  <span class="topbar-spacer"></span>
+
+  <nav class="links" aria-label="Primary">
+    <a href="https://dynacrown09-ai.github.io/DCUI-Generator-/" target="_blank" rel="noopener" class="primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      Launch the Editor
+    </a>
+    <a href="#3-step-by-step-tutorial-building-your-first-ui-flow">Tutorial</a>
+    <a href="#5-complete-node-reference">Node Reference</a>
+    <a href="#11-settings-customization--keyboard-shortcuts">Shortcuts</a>
+    <a href="https://github.com/dynacrown09-ai/DCUI-Generator-" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+    <a href="https://selar.com/showlove/dynacrown" target="_blank" rel="noopener">Support</a>
+  </nav>
+</header>
+
+<div class="shell" id="top">
+
+  <!-- ======================================================== sidebar -->
+  <aside class="sidebar" id="sidebar" aria-label="Table of contents">
+    <p class="side-title">📑 TABLE OF CONTENTS</p>
+    <ol class="navlist" id="navlist">
+      <li><a href="#1-quick-overview--live-access"><span class="n">01</span> Quick Overview &amp; Live Access</a></li>
+      <li><a href="#2-interface-layout-the-5-core-zones"><span class="n">02</span> Interface Layout: 5 Zones</a></li>
+      <li><a href="#3-step-by-step-tutorial-building-your-first-ui-flow"><span class="n">03</span> Build Your First UI Flow</a></li>
+      <li><a href="#4-wiring-engine--port-rules"><span class="n">04</span> Wiring Engine &amp; Port Rules</a></li>
+      <li><a href="#5-complete-node-reference"><span class="n">05</span> Complete Node Reference</a></li>
+      <li><a href="#6-interactive-live-preview--game-output"><span class="n">06</span> Live Preview &amp; Game Output</a></li>
+      <li><a href="#7-multi-page-navigation-open-form-node"><span class="n">07</span> Multi-Page Navigation</a></li>
+      <li><a href="#8-advanced-mode-code-editor--live-ast-parsing"><span class="n">08</span> Advanced Mode</a></li>
+      <li><a href="#9-images-textures--one-click-mcaddon-export"><span class="n">09</span> Images &amp; .mcaddon Export</a></li>
+      <li><a href="#10-installing-and-running-in-minecraft-bedrock"><span class="n">10</span> Installing in Bedrock</a></li>
+      <li><a href="#11-settings-customization--keyboard-shortcuts"><span class="n">11</span> Settings &amp; Shortcuts</a></li>
+      <li><a href="#12-troubleshooting--best-practices"><span class="n">12</span> Troubleshooting &amp; Tips</a></li>
+    </ol>
+
+    <div class="side-card">
+      <h4>⚡ 30-second path</h4>
+      <p>
+        <b>Trigger</b> → <b>Form</b> → chain <b>Controls</b> → wire <b>Actions</b> to
+        <code>submit</code> → test in Live Preview → <b>⚡ Generate Script</b> →
+        <b>📋 Copy JavaScript</b>.
+      </p>
+    </div>
+
+    <div class="side-card">
+      <h4>🔒 Privacy</h4>
+      <p>100% client-side. No project data, tokens or scripts ever leave your browser. Autosave uses <code>localStorage</code> / File System Access / OPFS.</p>
+    </div>
+  </aside>
+
+  <!-- ========================================================= content -->
+  <main class="content">
+
+    <!-- ------------------------------------------------------- hero -->
+    <div class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow"><span class="dot"></span> Live app · v1 · Free &amp; ad-free</span>
+
+        <p class="pixel-title">
+          <span class="crown">👑 DYNACROWN</span><br>
+          VISUAL SCRIPT UI EDITOR<br>
+          <span class="sub">— TUTORIAL &amp; MANUAL</span>
+        </p>
+        <h1 class="visually-hidden">DYNACROWN Visual Script UI Editor — Full Tutorial and Manual for Minecraft Bedrock Script UI</h1>
+
+        <p class="lede">
+          A browser-based, visual node blueprint studio built specifically for
+          <strong>Minecraft Bedrock Edition Addon Script UI</strong> (<code>@minecraft/server-ui</code>).
+          Design forms, buttons, controls, triggers, conditional logic and in-game commands visually on a
+          blueprint canvas — white grid lines on blue — preview them in real time with an authentic
+          Minecraft UI simulator, and export production-ready <strong>TypeScript</strong>,
+          <strong>JavaScript</strong> or a one-click <code>.mcaddon</code> package.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn gold" href="https://dynacrown09-ai.github.io/DCUI-Generator-/" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Launch the Editor
+          </a>
+          <a class="btn" href="#3-step-by-step-tutorial-building-your-first-ui-flow">
+            🧭 Start the Tutorial
+          </a>
+          <a class="btn ghost" href="#5-complete-node-reference">📚 Node Reference</a>
+          <button class="btn ghost" id="printBtn" type="button">🖨️ Save as PDF</button>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat"><b>5</b><span>Workspace zones</span></div>
+          <div class="stat"><b>30</b><span>Node types</span></div>
+          <div class="stat"><b>4</b><span>Export formats</span></div>
+          <div class="stat"><b>1.x</b><span>Stable server-ui API</span></div>
+          <div class="stat"><b>0</b><span>Bytes uploaded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================ 1. QUICK OVERVIEW -->
+    <section class="chapter" id="1-quick-overview--live-access">
+      <div class="chapter-head">
+        <span class="chapter-num">01</span>
+        <h2>Quick Overview &amp; Live Access</h2>
+        <a class="hash" href="#1-quick-overview--live-access" aria-label="Link to this section">#</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Resource</th><th>Link / command</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>🚀 Live app</td>
+              <td><a href="https://dynacrown09-ai.github.io/DCUI-Generator-/" target="_blank" rel="noopener"><code>https://dynacrown09-ai.github.io/DCUI-Generator-/</code></a></td>
+            </tr>
+            <tr>
+              <td>📖 Tutorial book</td>
+              <td><a href="https://dcui_t.pages.dev/" target="_blank" rel="noopener"><code>https://dcui_t.pages.dev/</code></a> — also reachable from the home screen and the in-app Workspace Guide</td>
+            </tr>
+            <tr>
+              <td>🐙 Source</td>
+              <td><a href="https://github.com/dynacrown09-ai/DCUI-Generator-" target="_blank" rel="noopener"><code>github.com/dynacrown09-ai/DCUI-Generator-</code></a> — or the <b>🐙 Edit on GitHub</b> toolbar button</td>
+            </tr>
+            <tr>
+              <td>❤️ Support</td>
+              <td><a href="https://selar.com/showlove/dynacrown" target="_blank" rel="noopener"><code>selar.com/showlove/dynacrown</code></a> — Selar “Show Love” tip jar</td>
+            </tr>
+            <tr>
+              <td>💻 Run locally</td>
+              <td><code>python3 -m http.server 8080</code> → <code>http://localhost:8080</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <p><b>Deploy pipeline.</b> The live site is served from the branch
+        <code>arena/01a06108-dcui-generator</code> via
+        <em>Settings → Pages → Deploy from a branch → / (root)</em>. Every push to that branch
+        auto-redeploys within roughly a minute. To deploy on <code>main</code> pushes instead, merge the
+        branch into <code>main</code>, switch the Pages source to <b>GitHub Actions</b> and re-add the
+        workflow file.</p>
+      </div>
+
+      <div class="warn">
+        <p><b>Repo privacy note.</b> The repository is set to <b>private</b> (files visible only to the
+        owner — <em>Settings → General → Danger Zone → Change visibility → Make private</em>).
+        GitHub Pages <em>cannot</em> be served from a private repository on the free plan, so while it
+        stays private the public URL above may stop resolving. The app itself keeps working from this
+        workspace and locally.</p>
+      </div>
+
+      <h3>Zero telemetry, 100% client-side</h3>
+      <p>
+        Everything runs inside your browser. No project data, tokens or generated scripts are sent to any
+        remote server. Autosave is maintained locally via <code>localStorage</code> or the File System
+        Access API / OPFS when you choose device storage.
+      </p>
+
+      <h3>Feature tour</h3>
+      <div class="grid-3">
+        <div class="feature">
+          <span class="ic">🏠</span>
+          <h4>Home launcher</h4>
+          <p>Dark-blue launcher with the pixel-art title banner, a <b>My Projects</b> grid (autosaved in the browser) and a big <b>+ New Project</b> button. Create, open, rename or delete from the tiles.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🎨</span>
+          <h4>Dark node workspace</h4>
+          <p>Near-black canvas with a subtle grid, dark node cards, neon category headers and glow ports (Pathmind-style), plus labelled wires.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">⬭</span>
+          <h4>Super-easy connections</h4>
+          <p>Drag output ⭘ → input, or <em>tap</em> a port then tap the target. Compatible ports light up, a hint guides you, and a haptic tick confirms the wire.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🔌</span>
+          <h4>Multi-connect ports</h4>
+          <p>Every port accepts <b>many</b> wires — fan a Trigger out to several forms, or one Action into several branches that run in order. Ports show numbered badges.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🖼️</span>
+          <h4>Branding &amp; PWA</h4>
+          <p>Golden pixel-crown + glowing <code>&lt;/&gt;</code> favicon (PNGs, <code>favicon.ico</code>, <code>favicon.svg</code>, PWA &amp; maskable assets) and an installable app manifest.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">💬</span>
+          <h4>Tooltips everywhere</h4>
+          <p>Hover any button on laptop (or press-and-hold on phone) for a small explainer card — palette items, ports, node actions and modals included.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🖱️</span>
+          <h4>Robust drag-to-canvas</h4>
+          <p>Laptop: HTML5 drag &amp; drop with a <code>text/plain</code> fallback plus a “drop here” highlight. Phone: touch <b>ghost-drag</b> that follows your finger.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">📂</span>
+          <h4>Open Form pages</h4>
+          <p>The <em>Open Form</em> action node makes buttons <b>redirect</b> to another form, like menu pages. The preview switches page and offers a page picker.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">📝</span>
+          <h4>Node notes</h4>
+          <p>Attach as many sticky notes as you like to any node (Properties → Notes). Notes save with the project and show a 📝 badge on the node.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🖥️</span>
+          <h4>Split preview</h4>
+          <p>Live Preview and Game Output sit <b>side by side</b> — preview left, output right — not stacked.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🔤</span>
+          <h4>Real Minecraft font</h4>
+          <p>Mojangles is proprietary, so Settings → Font → <b>MINECRAFT</b> uses “Minecraft” by Craftron Gaming (CC BY 4.0) with <b>Monocraft</b> (SIL OFL-1.1) as Unicode fallback.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🎵</span>
+          <h4>Homepage music</h4>
+          <p>A synthesized chiptune loop plays on the home screen. With Theme = Minecraft it loops your own <code>audio/minecraft-theme.mp3</code>, plus click SFX.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">📱</span>
+          <h4>Fully responsive</h4>
+          <p>Canvas-first mobile: quick bar, slide-up bottom drawers, drag-to-pan + pinch-to-zoom, haptics and safe-area support. Laptop gets collapsible panels.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🧭</span>
+          <h4>Guided tutorial</h4>
+          <p>Animated arrows that dynamically point at each key button and follow the target as you pan, zoom, scroll or resize — with a live spotlight. Auto-starts on first visit.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">🔍</span>
+          <h4>Global search</h4>
+          <p>Find any node anywhere on the canvas by name or type — or spawn new nodes straight from the search box.</p>
+        </div>
+        <div class="feature">
+          <span class="ic">⚡</span>
+          <h4>Two big export buttons</h4>
+          <p><b>📋 Copy TypeScript</b> / <b>📋 Copy JavaScript</b>, plus <b>⬇ Download</b> for <code>main.ts</code>, <code>main.js</code>, <code>.dcui</code> or <code>.mcaddon</code>.</p>
+        </div>
+      </div>
+
+      <div class="tip">
+        <p><b>Stable API guarantee.</b> Generated code always targets the <b>stable
+        <code>@minecraft/server-ui</code> 1.x</b> API — positional-argument signatures only, never the
+        beta/experimental options-object overloads. Your script keeps working after Minecraft updates.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 2. INTERFACE LAYOUT -->
+    <section class="chapter" id="2-interface-layout-the-5-core-zones">
+      <div class="chapter-head">
+        <span class="chapter-num">02</span>
+        <h2>Interface Layout: The 5 Core Zones</h2>
+        <a class="hash" href="#2-interface-layout-the-5-core-zones" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>
+        The editor workspace is organised into five specialised areas designed for seamless
+        flow-diagram authoring. <b>Hover or tap any zone</b> below to read what lives there.
+      </p>
+
+      <div class="zone-map" id="zoneMap">
+        <div class="zone zone-toolbar" data-zone="1">
+          <span class="z-num">ZONE 1</span>
+          <span class="z-name">Top Toolbar</span>
+          <span class="z-desc">Projects · Undo/Redo · Search · Settings · Preview · Guide · Generate</span>
+        </div>
+        <div class="zone zone-palette" data-zone="2">
+          <span class="z-num">ZONE 2</span>
+          <span class="z-name">Element Library</span>
+          <span class="z-desc">Flow · Controls · Actions</span>
+        </div>
+        <div class="zone zone-canvas" data-zone="3">
+          <span class="z-num">ZONE 3</span>
+          <span class="z-name">Blueprint Canvas</span>
+          <span class="z-desc">Blue grid, interactive nodes, bezier wires, drag · zoom · multi-select · snap</span>
+        </div>
+        <div class="zone zone-props" data-zone="4">
+          <span class="z-num">ZONE 4</span>
+          <span class="z-name">Properties Panel</span>
+          <span class="z-desc">Dynamic node fields · sticky notes</span>
+        </div>
+        <div class="zone-bottom">
+          <div class="zone" data-zone="5">
+            <span class="z-num">ZONE 5 · LEFT</span>
+            <span class="z-name">Live Minecraft Preview</span>
+            <span class="z-desc">Pixel-accurate Bedrock form simulator</span>
+          </div>
+          <div class="zone" data-zone="6">
+            <span class="z-num">ZONE 5 · RIGHT</span>
+            <span class="z-name">Game Output</span>
+            <span class="z-desc">Event trace console</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone-readout" id="zoneReadout">
+        <b>Zone 1 — Top Toolbar</b>
+        <p>Projects / Home, New · Import · Export, Undo / Redo, Global Search, Grid &amp; Snap, Preview toggle, Guided Tutorial, Workspace Guide, Settings and ⚡ Generate Script.</p>
+      </div>
+
+      <div class="codeblock">
+        <div class="bar"><span class="lang">layout</span><span class="file">workspace.txt</span>
+          <button class="copy-btn" type="button">📋 Copy</button></div>
+<pre class="ascii">+------------------------------------------------------------------------------------+
+| 1. Top Toolbar (Projects, Undo/Redo, Search, Settings, Preview, Guide, Generate)    |
++-------------------+--------------------------------------------+-------------------+
+|                   |                                            |                   |
+| 2. Element        | 3. Blueprint Canvas                        | 4. Properties     |
+|    Library        |    - Blue grid with interactive nodes      |    Panel          |
+|    (Flow,         |    - Wires connecting ports                |    - Dynamic node |
+|    Controls,      |    - Drag, zoom, multi-select, snap        |      fields       |
+|    Actions)       |                                            |    - Sticky notes |
+|                   |                                            |                   |
++-------------------+--------------------------------------------+-------------------+
+| 5. Split Bottom Bar: [ Live Minecraft Preview ]  |  [ Game Output Event Trace ]     |
++------------------------------------------------------------------------------------+</pre>
+      </div>
+
+      <h3>Zone 1 — Top Toolbar</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Button</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>🏠 Projects / Home</td><td>Return to the project launcher grid.</td></tr>
+            <tr><td>➕ New</td><td>Create a project — asks whether to store it in <b>Browser storage</b> (default) or a <b>Device / internal folder</b> (File System Access / OPFS).</td></tr>
+            <tr><td>📂 Import · 💾 Export</td><td>Load or save <code>.dcui</code> JSON projects.</td></tr>
+            <tr><td>↺ Undo · ↻ Redo</td><td>Full history tracking across every node change and wire connection.</td></tr>
+            <tr><td>🔍 Global Search</td><td>Instantly locate any node on the canvas by name or type, or spawn new nodes directly.</td></tr>
+            <tr><td>🧲 Grid &amp; Snap</td><td>Toggle the canvas background grid and auto-align snapping.</td></tr>
+            <tr><td>🖼️ Preview</td><td>Show or hide the bottom simulator bar (shortcut <kbd>P</kbd>).</td></tr>
+            <tr><td>🧭 Guided Tutorial</td><td>Launch dynamic on-screen tracking arrows that highlight key buttons.</td></tr>
+            <tr><td>📖 Workspace Guide</td><td>Open the quick in-app cheat sheet.</td></tr>
+            <tr><td>⚙️ Settings</td><td>Themes, Minecraft typography, audio and experience modes.</td></tr>
+            <tr><td>⚡ Generate Script</td><td>Open the generator modal — copy TS/JS or download <code>.mcaddon</code>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Zone 2 — Left Element Library (Palette)</h3>
+      <p>
+        A categorised repository of building blocks: <b>Flow</b> (Triggers, Forms), <b>Controls</b>
+        (Buttons, Toggles, Sliders, Dropdowns, Inputs) and <b>Actions</b> (Commands, Effects, Teleports,
+        Delays, Page Navigation). Click to add at the canvas centre, or drag-and-drop onto exact target
+        coordinates — with mobile touch ghosting support.
+      </p>
+
+      <h3>Zone 3 — Centre Blueprint Canvas</h3>
+      <p>
+        Dark blue blueprint canvas with pan, zoom (mouse wheel / pinch gesture), box-selection and
+        connection bezier curves. Keyboard shortcuts apply here: <kbd>Del</kbd>,
+        <kbd>Ctrl</kbd>+<kbd>Z</kbd>, <kbd>Ctrl</kbd>+<kbd>Y</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd>,
+        <kbd>Ctrl</kbd>+<kbd>V</kbd> and <kbd>Space</kbd> to pan.
+      </p>
+
+      <h3>Zone 4 — Right Properties Panel</h3>
+      <p>
+        Select any node to configure its parameters in real time — titles, item IDs, min/max values,
+        crouch flags and dynamic result variable names. Add persistent <b>Sticky Notes</b> (📝) to
+        document your logic directly on each node.
+      </p>
+
+      <h3>Zone 5 — Bottom Split Preview &amp; Game Output</h3>
+      <ul class="clean">
+        <li><b>Left:</b> pixel-accurate Minecraft Bedrock form simulator showing your form title, body, buttons, toggles, sliders and inputs.</li>
+        <li><b>Right:</b> live interactive console logging simulated player actions, command invocations, variable substitutions (<code>${var}</code>) and condition branches.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================ 3. STEP BY STEP -->
+    <section class="chapter" id="3-step-by-step-tutorial-building-your-first-ui-flow">
+      <div class="chapter-head">
+        <span class="chapter-num">03</span>
+        <h2>Step-by-Step Tutorial: Building Your First UI Flow</h2>
+        <a class="hash" href="#3-step-by-step-tutorial-building-your-first-ui-flow" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>
+        Let's walk through building a complete, real-world Minecraft Bedrock script UI:
+        <strong>a Staff Admin Menu</strong> opened by right-clicking a compass while crouching.
+      </p>
+
+      <div class="step">
+        <span class="n">1</span>
+        <h4>Add and configure a Trigger</h4>
+        <ol>
+          <li>In the <b>Element Library</b> (left), click or drag a <b>Trigger</b> node onto the canvas.</li>
+          <li>Click the Trigger node to open the <b>Properties Panel</b> (right).</li>
+          <li>Set <b>Event</b> to <code>Crouch + interact with this item</code> — or choose <code>Item used (right-click)</code> and set <b>Crouch rule</b> to <code>Only while crouching (sneaking)</code>.</li>
+          <li>In <b>Item (item used)</b>, enter <code>minecraft:compass</code>.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <span class="n">2</span>
+        <h4>Add and connect a Form</h4>
+        <ol>
+          <li>From the library, add a <b>Form</b> node.</li>
+          <li>In the Properties panel set <b>Form type</b> → <code>Modal form (inputs)</code>, <b>Title</b> → <code>§l§6Staff Utility Menu</code>, <b>Submit button</b> → <code>Execute Action</code>.</li>
+          <li>Wire the Trigger to the Form: click or drag from the Trigger's <b>open</b> (<code>out</code>) port to the Form's <b>trigger</b> (<code>in</code>) port.</li>
+        </ol>
+        <div class="grid-2" style="margin-top:14px">
+          <div class="mini-node flow">
+            <header>⚡ TRIGGER</header>
+            <div class="body">
+              <div class="row"><span>Event</span><span>Crouch + interact with item</span></div>
+              <div class="row"><span>Item</span><span>minecraft:compass</span></div>
+            </div>
+            <div class="ports"><span class="port in">in</span><span class="port out">open ⭘</span></div>
+          </div>
+          <div class="mini-node flow">
+            <header>📋 FORM · MODAL</header>
+            <div class="body">
+              <div class="row"><span>Title</span><span>§l§6Staff Utility Menu</span></div>
+              <div class="row"><span>Submit</span><span>Execute Action</span></div>
+            </div>
+            <div class="ports"><span class="port in">trigger</span><span class="port out">controls</span><span class="port act">submit</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <span class="n">3</span>
+        <h4>Add control inputs</h4>
+        <ol>
+          <li>Add a <b>Toggle</b> — Label <code>Enable Night Vision</code>, Default <code>true</code>, Result name <code>giveVision</code>.</li>
+          <li>Add a <b>Slider</b> — Label <code>Teleport Height (Y)</code>, Min <code>64</code>, Max <code>320</code>, Step <code>10</code>, Default <code>100</code>, Result name <code>targetY</code>.</li>
+          <li>Chain the controls from the Form: wire the Form's <b>controls</b> (<code>next</code>) port → Toggle <code>in</code>, then Toggle <code>next</code> → Slider <code>in</code>.</li>
+        </ol>
+        <div class="tip" style="margin-top:12px">
+          <p><b>Order matters.</b> The chain sequence <em>is</em> the visual ordering inside the
+          Minecraft form — whatever you wire first renders first.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <span class="n">4</span>
+        <h4>Add conditional actions &amp; commands</h4>
+        <ol>
+          <li>Add a <b>Condition</b> — Left value <code>${giveVision}</code>, Compare <code>==</code>, Right value <code>true</code>.</li>
+          <li>Add an <b>Add Effect</b> — Effect <code>night_vision</code>, Duration <code>300</code> seconds, Amplifier <code>1</code>.</li>
+          <li>Add a <b>Run Command</b> — Command <code>tp @s ~ ${targetY} ~</code>.</li>
+        </ol>
+        <p style="margin-top:10px">Then connect the action flow:</p>
+        <ul class="clean">
+          <li>Form <b>submit</b> → Condition <code>in</code></li>
+          <li>Condition <b>yes ✓</b> → Add Effect <code>in</code></li>
+          <li>Add Effect <b>next</b> → Run Command <code>in</code></li>
+        </ul>
+        <div class="grid-2" style="margin-top:12px">
+          <div class="mini-node cond">
+            <header>❓ CONDITION</header>
+            <div class="body">
+              <div class="row"><span>Left</span><span>${giveVision}</span></div>
+              <div class="row"><span>Compare</span><span>==</span></div>
+              <div class="row"><span>Right</span><span>true</span></div>
+            </div>
+            <div class="ports"><span class="port in">in</span><span class="port yes">yes ✓</span><span class="port yes">no ✗</span></div>
+          </div>
+          <div class="mini-node action">
+            <header>🧪 ADD EFFECT</header>
+            <div class="body">
+              <div class="row"><span>Effect</span><span>night_vision</span></div>
+              <div class="row"><span>Duration</span><span>300s</span></div>
+              <div class="row"><span>Amplifier</span><span>1</span></div>
+            </div>
+            <div class="ports"><span class="port in">in</span><span class="port act">next</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <span class="n">5</span>
+        <h4>Test in the Live Preview</h4>
+        <ol>
+          <li>Open the bottom <b>Live Preview</b> bar (or press <kbd>P</kbd>).</li>
+          <li>Interact with the rendered form: flip the toggle, adjust the height slider, press <b>Execute Action</b>.</li>
+          <li>Watch the <b>Game Output</b> console on the right — verify that <code>${giveVision}</code> evaluated to <code>true</code>, the night-vision effect was granted, and the teleport command was built with the exact <code>${targetY}</code> slider value.</li>
+        </ol>
+        <p style="margin-top:10px">Try it right here — this is a working replica of the simulator:</p>
+        <div class="mc-preview">
+          <div class="mc-screen">
+            <div class="mc-window">
+              <div class="mc-title">§l§6Staff Utility Menu</div>
+              <p class="mc-body">Choose your staff utilities. Values are interpolated into commands on submit.</p>
+
+              <div class="mc-field">
+                <div class="mc-toggle">
+                  <span>Enable Night Vision</span>
+                  <span class="mc-switch on" id="sw-vision" role="switch" aria-checked="true" tabindex="0"></span>
+                </div>
+              </div>
+
+              <div class="mc-field">
+                <div class="mc-label">Teleport Height (Y): <b id="yOut">100</b></div>
+                <div class="mc-slider"><span>64</span><input type="range" id="yRange" min="64" max="320" step="10" value="100"><span>320</span></div>
+              </div>
+
+              <button class="mc-btn primary" id="submitBtn" type="button">Execute Action</button>
+              <button class="mc-btn" id="cancelBtn" type="button">Cancel</button>
+            </div>
+          </div>
+          <div class="mc-console" id="console" aria-live="polite">
+            <button class="clr" id="clearLog" type="button">clear</button>
+            <div class="l dim">// Game Output — event trace</div>
+            <div class="l dim">// Interact with the form above, then press “Execute Action”.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <span class="n">6</span>
+        <h4>Generate &amp; export</h4>
+        <ol>
+          <li>Click <b>⚡ Generate Script</b> in the top toolbar.</li>
+          <li>Review the generated script and the warning validator.</li>
+          <li>Click <b>📋 Copy JavaScript</b> (or <b>📋 Copy TypeScript</b>), or choose <b>⬇ Download .mcaddon</b>.</li>
+        </ol>
+        <p style="margin-top:10px">The flow above compiles to roughly this:</p>
+        <div class="codeblock">
+          <div class="bar"><span class="lang">typescript</span><span class="file">scripts/main.ts</span>
+            <button class="copy-btn" type="button">📋 Copy</button></div>
+<pre><span class="tok-c">// DYNACROWN Visual Script UI Editor — generated script</span>
+<span class="tok-k">import</span> { world, system } <span class="tok-k">from</span> <span class="tok-s">"@minecraft/server"</span>;
+<span class="tok-k">import</span> { ModalFormData } <span class="tok-k">from</span> <span class="tok-s">"@minecraft/server-ui"</span>;
+
+<span class="tok-k">function</span> <span class="tok-f">openForm_staffUtilityMenu</span>(player) {
+  <span class="tok-k">const</span> form = <span class="tok-k">new</span> <span class="tok-f">ModalFormData</span>()
+    .<span class="tok-f">title</span>(<span class="tok-s">"§l§6Staff Utility Menu"</span>)
+    .<span class="tok-f">toggle</span>(<span class="tok-s">"Enable Night Vision"</span>, <span class="tok-k">true</span>)
+    .<span class="tok-f">slider</span>(<span class="tok-s">"Teleport Height (Y)"</span>, <span class="tok-n">64</span>, <span class="tok-n">320</span>, <span class="tok-n">10</span>, <span class="tok-n">100</span>);
+
+  form.<span class="tok-f">show</span>(player).<span class="tok-f">then</span>((res) =&gt; {
+    <span class="tok-k">if</span> (res.canceled) <span class="tok-k">return</span>;
+    <span class="tok-k">const</span> <span class="tok-v">giveVision</span> = res.formValues[<span class="tok-n">0</span>];
+    <span class="tok-k">const</span> <span class="tok-v">targetY</span>   = res.formValues[<span class="tok-n">1</span>];
+
+    <span class="tok-k">if</span> (<span class="tok-v">giveVision</span> == <span class="tok-k">true</span>) {
+      player.<span class="tok-f">addEffect</span>(<span class="tok-s">"night_vision"</span>, <span class="tok-n">300</span> * <span class="tok-n">20</span>, { amplifier: <span class="tok-n">1</span> });
+      player.<span class="tok-f">runCommand</span>(<span class="tok-s">`tp @s ~ ${</span><span class="tok-v">targetY</span><span class="tok-s">} ~`</span>);
+    }
+  });
+}
+
+world.afterEvents.itemUse.<span class="tok-f">subscribe</span>((ev) =&gt; {
+  <span class="tok-k">const</span> player = ev.source;
+  <span class="tok-k">if</span> (ev.itemStack?.typeId !== <span class="tok-s">"minecraft:compass"</span>) <span class="tok-k">return</span>;
+  <span class="tok-k">if</span> (!player.isSneaking) <span class="tok-k">return</span>;            <span class="tok-c">// crouch + item use</span>
+  <span class="tok-f">openForm_staffUtilityMenu</span>(player);
+});</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ 4. WIRING ENGINE -->
+    <section class="chapter" id="4-wiring-engine--port-rules">
+      <div class="chapter-head">
+        <span class="chapter-num">04</span>
+        <h2>Wiring Engine &amp; Port Rules</h2>
+        <a class="hash" href="#4-wiring-engine--port-rules" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>The visual editor uses a directional port architecture:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Port style / label</th><th>Colour / appearance</th><th>Function &amp; allowed connections</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Flow Output<br><code>open</code>, <code>controls</code>, <code>next</code></td>
+              <td>Purple / Cyan</td>
+              <td>Sequences triggers into forms, or chains UI controls together.</td>
+            </tr>
+            <tr>
+              <td>Action Output<br><code>submit</code>, <code>on click</code>, <code>then</code></td>
+              <td>Emerald green</td>
+              <td>Executes logic when a form is submitted or a button is pressed.</td>
+            </tr>
+            <tr>
+              <td>Condition Outputs<br><code>yes ✓</code>, <code>no ✗</code></td>
+              <td>Amber / gold</td>
+              <td>Branches execution based on boolean or comparison expressions.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Build your UI in 3 steps</h3>
+      <ol class="steps">
+        <li><b>Add a Trigger</b> (e.g. <em>Item used</em> → <code>minecraft:stick</code>, or <em>Crouch + interact with this mob</em> → <code>minecraft:villager</code>) and connect it to a <b>Form</b>.</li>
+        <li>Chain <b>Controls</b> from the form's <code>controls</code> port — order in the form = order of the chain.</li>
+        <li>Connect <b>Actions</b> to the form's <code>submit</code> port — they run after the player submits.
+          <em>Buttons:</em> connect actions to the button's <code>on click</code> port instead.</li>
+      </ol>
+
+      <h3>Multi-wire rules</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>🔀 One-to-many fan-out</h4>
+          <p style="font-size:13px">Every output port supports multiple simultaneous connections:</p>
+          <ul class="clean" style="font-size:13px">
+            <li>A single <b>Trigger</b> can trigger multiple forms or log events.</li>
+            <li>A single <b>Action</b> or <b>Submit</b> port can fan out to execute several independent action branches in sequence.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>🔢 Badge indicators</h4>
+          <p style="font-size:13px">Ports with 2 or more active connections display a numerical badge — <code>[2]</code>, <code>[3]</code> — so you can see fan-out at a glance without tracing wires.</p>
+        </div>
+        <div class="card">
+          <h4>👆 Tap-connect mode</h4>
+          <p style="font-size:13px">Tap any output port to enter connection mode (compatible targets glow), then tap target input ports to connect. You can tap multiple targets continuously without re-selecting the source. Tap empty canvas to exit — the mode stays armed so you can add 2, 3, 4 wires in one session.</p>
+        </div>
+        <div class="card">
+          <h4>🗑️ Deleting wires</h4>
+          <p style="font-size:13px"><b>Desktop:</b> click a wire to select it and press <kbd>Delete</kbd> or <kbd>Backspace</kbd>. <b>Mobile:</b> simply <b>double-tap</b> any wire.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <p><b>Duplicate guard.</b> Identical duplicate wires (same source port → same target port) are
+        politely refused, so you can never accidentally double-fire an action.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 5. NODE REFERENCE -->
+    <section class="chapter" id="5-complete-node-reference">
+      <div class="chapter-head">
+        <span class="chapter-num">05</span>
+        <h2>Complete Node Reference</h2>
+        <a class="hash" href="#5-complete-node-reference" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>
+        Every block in the Element Library, with its category, key properties and ports.
+        <b>Filter by category or search</b> — the list is live.
+      </p>
+
+      <div class="filter-row">
+        <button class="chip on" type="button" data-filter="all">All</button>
+        <button class="chip" type="button" data-filter="flow">⚡ Flow</button>
+        <button class="chip" type="button" data-filter="control">🔘 Controls</button>
+        <button class="chip" type="button" data-filter="action">⚙️ Actions</button>
+        <input class="search-input" id="nodeSearch" type="search" placeholder="🔍 Search 30 nodes…" aria-label="Search node reference">
+        <span class="count-badge" id="nodeCount">30 nodes</span>
+      </div>
+
+      <div class="table-wrap">
+        <table id="nodeTable">
+          <thead>
+            <tr><th>Node</th><th>Category</th><th>Key properties</th><th>Ports (in → out)</th><th>Generates</th></tr>
+          </thead>
+          <tbody>
+            <!-- FLOW -->
+            <tr data-cat="flow"><td>⚡ Trigger · Item used</td><td>Flow</td><td>Item ID (<code>minecraft:stick</code>), crouch rule</td><td><code>—</code> → <code>open</code></td><td><code>world.afterEvents.itemUse</code></td></tr>
+            <tr data-cat="flow"><td>⚡ Trigger · Crouch + item use</td><td>Flow</td><td>Item ID, must be sneaking</td><td><code>—</code> → <code>open</code></td><td><code>itemUse</code> + <code>isSneaking</code> guard</td></tr>
+            <tr data-cat="flow"><td>⚡ Trigger · Block interacted</td><td>Flow</td><td>Block / permutation filter</td><td><code>—</code> → <code>open</code></td><td><code>playerInteractWithBlock</code></td></tr>
+            <tr data-cat="flow"><td>⚡ Trigger · Mob / entity interacted</td><td>Flow</td><td>Entity type (<code>minecraft:villager</code>), crouch flag</td><td><code>—</code> → <code>open</code></td><td><code>playerInteractWithEntity</code></td></tr>
+            <tr data-cat="flow"><td>⚡ Trigger · Crouch + mob interaction</td><td>Flow</td><td>Entity type, sneaking required</td><td><code>—</code> → <code>open</code></td><td><code>playerInteractWithEntity</code> + sneak guard</td></tr>
+            <tr data-cat="flow"><td>⚡ Trigger · Chat command</td><td>Flow</td><td>Prefix (<code>!menu</code>), optional args</td><td><code>—</code> → <code>open</code></td><td><code>chatSend</code> with <code>cancel = true</code></td></tr>
+            <tr data-cat="flow"><td>⚡ Trigger · Player join</td><td>Flow</td><td>—</td><td><code>—</code> → <code>open</code></td><td><code>playerSpawn</code> (first spawn)</td></tr>
+            <tr data-cat="flow"><td>⚡ Trigger · Interval</td><td>Flow</td><td>Every N seconds</td><td><code>—</code> → <code>open</code></td><td><code>system.runInterval</code></td></tr>
+            <tr data-cat="flow"><td>📋 Form · Modal</td><td>Flow</td><td>Title, body, submit text, cancel text</td><td><code>trigger</code> → <code>controls</code>, <code>submit</code></td><td><code>new ModalFormData()</code></td></tr>
+            <tr data-cat="flow"><td>📋 Form · Action</td><td>Flow</td><td>Title, body, buttons</td><td><code>trigger</code> → <code>buttons</code>, <code>select</code></td><td><code>new ActionFormData()</code></td></tr>
+            <tr data-cat="flow"><td>📋 Form · Message</td><td>Flow</td><td>Title, body</td><td><code>trigger</code> → <code>confirm</code>, <code>cancel</code></td><td><code>new MessageFormData()</code></td></tr>
+
+            <!-- CONTROLS -->
+            <tr data-cat="control"><td>🔘 Button</td><td>Controls</td><td>Label, icon texture</td><td><code>in</code> → <code>next</code>, <code>on click</code></td><td><code>.button()</code></td></tr>
+            <tr data-cat="control"><td>🔘 Toggle</td><td>Controls</td><td>Label, default value, result name</td><td><code>in</code> → <code>next</code></td><td><code>.toggle()</code> → boolean</td></tr>
+            <tr data-cat="control"><td>🔘 Slider</td><td>Controls</td><td>Label, min, max, step, default, result name</td><td><code>in</code> → <code>next</code></td><td><code>.slider()</code> → number</td></tr>
+            <tr data-cat="control"><td>🔘 Dropdown</td><td>Controls</td><td>Label, option list, default index, result name</td><td><code>in</code> → <code>next</code></td><td><code>.dropdown()</code> → index</td></tr>
+            <tr data-cat="control"><td>🔍 Search input</td><td>Controls</td><td>Label, placeholder, default, result name</td><td><code>in</code> → <code>next</code></td><td><code>.textField()</code> → string</td></tr>
+            <tr data-cat="control"><td>✏️ Text Input</td><td>Controls</td><td>Label, placeholder, default, result name</td><td><code>in</code> → <code>next</code></td><td><code>.textField()</code> → string</td></tr>
+            <tr data-cat="control"><td>🏷️ Label</td><td>Controls</td><td>Text (supports <code>§</code> codes)</td><td><code>in</code> → <code>next</code></td><td>Body-text line <sup>†</sup></td></tr>
+            <tr data-cat="control"><td>🔠 Header</td><td>Controls</td><td>Text (large title line)</td><td><code>in</code> → <code>next</code></td><td>Bold body-text line <sup>†</sup></td></tr>
+            <tr data-cat="control"><td>➖ Divider</td><td>Controls</td><td>Character (default <code>§8---</code>)</td><td><code>in</code> → <code>next</code></td><td>Separator body line <sup>†</sup></td></tr>
+
+            <!-- ACTIONS -->
+            <tr data-cat="action"><td>💬 Send Message</td><td>Actions</td><td>Message, target selector, <code>${result}</code> interpolation</td><td><code>in</code> → <code>next</code></td><td><code>player.sendMessage()</code></td></tr>
+            <tr data-cat="action"><td>⌨️ Run Command</td><td>Actions</td><td>Command string with <code>${vars}</code></td><td><code>in</code> → <code>next</code></td><td><code>runCommand()</code></td></tr>
+            <tr data-cat="action"><td>🎁 Give Item</td><td>Actions</td><td>Item ID, amount, name / lore</td><td><code>in</code> → <code>next</code></td><td><code>give</code> command</td></tr>
+            <tr data-cat="action"><td>🧪 Add Effect</td><td>Actions</td><td>Effect, duration (s), amplifier</td><td><code>in</code> → <code>next</code></td><td><code>addEffect()</code> / <code>effect</code> command</td></tr>
+            <tr data-cat="action"><td>🔊 Play Sound</td><td>Actions</td><td>Sound ID, volume, pitch</td><td><code>in</code> → <code>next</code></td><td><code>playsound</code></td></tr>
+            <tr data-cat="action"><td>🏷️ Set Title / Actionbar</td><td>Actions</td><td>Mode, text, fade / stay times</td><td><code>in</code> → <code>next</code></td><td><code>onScreenDisplay.setTitle()</code></td></tr>
+            <tr data-cat="action"><td>🧭 Teleport</td><td>Actions</td><td>X / Y / Z or <code>~</code> relative, target</td><td><code>in</code> → <code>next</code></td><td><code>tp</code> command</td></tr>
+            <tr data-cat="action"><td>❓ Condition (if / else)</td><td>Actions</td><td>Left value, operator, right value</td><td><code>in</code> → <code>yes ✓</code>, <code>no ✗</code></td><td><code>if (…) { … } else { … }</code></td></tr>
+            <tr data-cat="action"><td>⏱️ Delay</td><td>Actions</td><td>Seconds or ticks</td><td><code>in</code> → <code>next</code></td><td><code>system.runTimeout()</code></td></tr>
+            <tr data-cat="action"><td>📂 Open Form</td><td>Actions</td><td>Target form (page)</td><td><code>in</code> → <code>next</code></td><td>Direct call to the target form function</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="nodeEmpty" hidden style="color:var(--ink-faint);font-size:13px">No node matches that search.</p>
+
+      <h3 id="flow-nodes">Flow nodes <span class="tag flow">Triggers &amp; Forms</span></h3>
+      <p>
+        Flow nodes are the skeleton of your script. A <b>Trigger</b> owns exactly one
+        <code>open</code> output and no input — it is where execution begins. A <b>Form</b> receives that
+        signal on its <code>trigger</code> port and exposes two further outputs: a <b>flow</b> output
+        (<code>controls</code> / <code>buttons</code>) for building the form's contents, and an
+        <b>action</b> output (<code>submit</code> / <code>select</code>) for what happens afterwards.
+      </p>
+
+      <h3 id="control-nodes">Control nodes <span class="tag control">Inputs &amp; Elements</span></h3>
+      <p>
+        Controls chain off the form's content port. Each has one <code>in</code> and one
+        <code>next</code>, so the wire order is the render order. Every value-producing control
+        (Toggle, Slider, Dropdown, Search, Text Input) exposes a <b>Result name</b> in Properties —
+        that becomes a <code>const</code> in the generated script and is what you reference as
+        <code>${name}</code> inside conditions and commands.
+      </p>
+      <p>
+        Only those value-producing controls occupy a slot in <code>res.formValues</code>. Label, Header
+        and Divider are display-only, so the generated script indexes
+        <code>formValues[0]</code>, <code>[1]</code>, <code>[2]</code>… straight through the inputs in
+        chain order, skipping them.
+      </p>
+
+      <div class="warn">
+        <p><sup>†</sup> <b>Why these three have no builder call.</b> The stable
+        <code>@minecraft/server-ui</code> 1.x <code>ModalFormData</code> exposes exactly seven methods —
+        <code>dropdown</code>, <code>show</code>, <code>slider</code>, <code>submitButton</code>,
+        <code>textField</code>, <code>title</code> and <code>toggle</code>. There is <b>no
+        <code>.label()</code></b> in the stable API, so <b>Label</b>, <b>Header</b> and <b>Divider</b>
+        are emitted as text lines inside the form's <code>.body()</code>. They appear in the preview in
+        chain order, but they do <em>not</em> consume an index in <code>res.formValues</code> — only
+        Toggle, Slider, Dropdown and Text Input / Search do.</p>
+      </div>
+
+      <div class="note">
+        <p><b>Button labels on a Message form.</b> <code>MessageFormData</code> in 1.x exposes only
+        <code>body</code>, <code>show</code> and <code>title</code> — there is no
+        <code>.button()</code> method, so the confirm and cancel captions cannot be renamed from a
+        stable-API script. Branch on <code>res.selection</code> (<code>0</code> = confirm,
+        <code>1</code> = cancel) instead.</p>
+      </div>
+
+      <div class="note">
+        <p><b>API version.</b> This manual documents the editor's output target — the stable
+        <code>@minecraft/server-ui</code> <b>1.x</b> line (<code>1.0.0</code> → <code>1.3.0</code>),
+        positional arguments only. A newer <b>2.x</b> stable line now exists on npm; signatures there
+        may differ, so pin <code>"version": "1.x"</code> in your pack manifest to match the generated
+        code.</p>
+      </div>
+
+      <h3 id="action-nodes">Action nodes <span class="tag action">Commands &amp; Execution</span></h3>
+      <p>
+        Actions are the leaves of the tree. Most are linear (<code>in</code> → <code>next</code>) and run
+        top to bottom. <b>Condition</b> is the only branching node: it evaluates
+        <code>left &lt;op&gt; right</code> after <code>${result}</code> interpolation and sends execution
+        down <code>yes ✓</code> or <code>no ✗</code>. <b>Open Form</b> is the only action that leaves the
+        current form and enters another one.
+      </p>
+
+      <div class="tip">
+        <p><b>Interpolation.</b> Anywhere you can type text — messages, commands, titles — you can
+        reference a control's result with <code>${resultName}</code>. The generator emits a real
+        template literal, so <code>tp @s ~ ${targetY} ~</code> becomes
+        <code>`tp @s ~ ${targetY} ~`</code> in the output.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 6. PREVIEW -->
+    <section class="chapter" id="6-interactive-live-preview--game-output">
+      <div class="chapter-head">
+        <span class="chapter-num">06</span>
+        <h2>Interactive Live Preview &amp; Game Output</h2>
+        <a class="hash" href="#6-interactive-live-preview--game-output" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>
+        The bottom bar is split in two and always reflects the currently selected trigger path.
+        The <b>left</b> pane is a pixel-accurate Bedrock form simulator — real grey chrome, bevelled
+        buttons, working toggles, sliders and text fields. The <b>right</b> pane is an event trace that
+        logs exactly what the generated script would do at runtime.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>What the simulator renders</h4>
+          <ul class="clean" style="font-size:13px">
+            <li>Form title with <code>§</code> colour codes honoured</li>
+            <li>Body text, labels, headers and dividers in chain order</li>
+            <li>Buttons (with icon textures when you attached images)</li>
+            <li>Toggles, sliders, dropdowns, text and search fields — all interactive</li>
+            <li>Submit / cancel buttons, matching your configured labels</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>What Game Output logs</h4>
+          <ul class="clean" style="font-size:13px">
+            <li>Which trigger fired, and the item / entity / command that fired it</li>
+            <li>The submitted <code>formValues</code> mapped to your result names</li>
+            <li>Every command string <em>after</em> <code>${var}</code> substitution</li>
+            <li>Condition evaluations — which branch was taken and why</li>
+            <li>Effects granted, sounds played, teleports and page navigations</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Why this matters</h3>
+      <p>
+        The single most common bug in hand-written Script UI code is an off-by-one index into
+        <code>res.formValues</code>. Because the simulator uses the exact same chain the generator walks,
+        a flow that behaves correctly in the preview produces correct indices in the export. If the
+        preview is wrong, the code is wrong — and you find out before Minecraft does.
+      </p>
+
+      <div class="note">
+        <p><b>Cancellation.</b> Pressing <b>Cancel</b> (or closing the form) sets
+        <code>res.canceled</code>; the generated script returns early, so none of your actions run.
+        The preview console prints the cancellation so you can confirm the guard works.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 7. MULTI-PAGE -->
+    <section class="chapter" id="7-multi-page-navigation-open-form-node">
+      <div class="chapter-head">
+        <span class="chapter-num">07</span>
+        <h2>Multi-Page Navigation (Open Form Node)</h2>
+        <a class="hash" href="#7-multi-page-navigation-open-form-node" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>
+        Real menus are rarely one screen. The <b>📂 Open Form</b> action node turns any button into a
+        <em>redirect</em> to another form — the same pattern as a main menu opening a sub-menu.
+      </p>
+
+      <h3>How to wire a page</h3>
+      <ol class="steps">
+        <li>Build your destination form first (its own Trigger is optional — pages opened by a button don't need one).</li>
+        <li>On your menu form, add a <b>Button</b> control and label it (e.g. <code>⚙️ Server Settings</code>).</li>
+        <li>From the button's <code>on click</code> port, wire an <b>Open Form</b> node.</li>
+        <li>In Properties, pick the <b>Target form</b>. The dropdown lists every form in the project.</li>
+        <li>Repeat for each menu entry — one trigger, many pages.</li>
+      </ol>
+
+      <div class="codeblock">
+        <div class="bar"><span class="lang">typescript</span><span class="file">generated · page navigation</span>
+          <button class="copy-btn" type="button">📋 Copy</button></div>
+<pre><span class="tok-k">function</span> <span class="tok-f">openForm_mainMenu</span>(player) {
+  <span class="tok-k">const</span> menu = <span class="tok-k">new</span> <span class="tok-f">ActionFormData</span>()
+    .<span class="tok-f">title</span>(<span class="tok-s">"§l§6Server Menu"</span>)
+    .<span class="tok-f">button</span>(<span class="tok-s">"⚙️ Server Settings"</span>)
+    .<span class="tok-f">button</span>(<span class="tok-s">"🧭 Teleports"</span>);
+
+  menu.<span class="tok-f">show</span>(player).<span class="tok-f">then</span>((res) =&gt; {
+    <span class="tok-k">if</span> (res.canceled) <span class="tok-k">return</span>;
+    <span class="tok-k">if</span> (res.selection === <span class="tok-n">0</span>) <span class="tok-f">openForm_serverSettings</span>(player);  <span class="tok-c">// Open Form →</span>
+    <span class="tok-k">if</span> (res.selection === <span class="tok-n">1</span>) <span class="tok-f">openForm_teleports</span>(player);
+  });
+}</pre>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>In the Live Preview</h4>
+          <p style="font-size:13px">Pressing a button wired to <b>Open Form</b> switches the simulator to that page instead of running actions — so you can click through the whole menu tree. When the project has multiple forms, a <b>page picker</b> appears above the preview so you can jump straight to any page.</p>
+        </div>
+        <div class="card">
+          <h4>In the exported script</h4>
+          <p style="font-size:13px">Each form becomes its own <code>function openForm_&lt;name&gt;(player)</code>, and <b>Open Form</b> compiles to a direct call to the target function — no string lookups, no runtime registry, nothing to fall out of sync.</p>
+        </div>
+      </div>
+
+      <div class="warn">
+        <p><b>Avoid cycles.</b> Page A → Page B → Page A is legal but will re-open forms forever if the
+        player keeps clicking. Add a “⬅ Back” button that opens the parent page rather than chaining
+        deeper, and keep nesting to two or three levels.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 8. ADVANCED MODE -->
+    <section class="chapter" id="8-advanced-mode-code-editor--live-ast-parsing">
+      <div class="chapter-head">
+        <span class="chapter-num">08</span>
+        <h2>Advanced Mode (Code Editor &amp; Live AST Parsing)</h2>
+        <a class="hash" href="#8-advanced-mode-code-editor--live-ast-parsing" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>
+        Settings → <b>Experience Mode → Advanced</b> hides the visual editor entirely and leaves exactly
+        three panels. It is the mode for people who would rather write the script and still get the
+        simulator.
+      </p>
+
+      <div class="grid-3">
+        <div class="feature"><span class="ic">🧑‍💻</span><h4>Code Editor</h4><p>Write or paste <code>@minecraft/server-ui</code> code directly. TypeScript annotations and <code>import</code> lines are tolerated — the parser strips them before analysis.</p></div>
+        <div class="feature"><span class="ic">🖥️</span><h4>Preview Board</h4><p>Live-parses <code>ModalFormData</code> / <code>ActionFormData</code> / <code>MessageFormData</code> calls and renders the resulting form as you type.</p></div>
+        <div class="feature"><span class="ic">📟</span><h4>Game Output</h4><p>Same event-trace console as Tree mode, driven from the parsed AST rather than the node graph.</p></div>
+      </div>
+
+      <h3>What stays available in Advanced mode</h3>
+      <ul class="clean">
+        <li><b>Import</b> / <b>Export</b> — project files still round-trip.</li>
+        <li><b>Generate</b> — including <code>.mcaddon</code> bundling.</li>
+        <li><b>Tutorial</b> — the guided tour still runs.</li>
+        <li><b>Convert to Tree Mode</b> — one click back to the blueprint canvas.</li>
+      </ul>
+
+      <div class="codeblock">
+        <div class="bar"><span class="lang">typescript</span><span class="file">paste this into the Advanced Code Editor</span>
+          <button class="copy-btn" type="button">📋 Copy</button></div>
+<pre><span class="tok-k">import</span> { ModalFormData } <span class="tok-k">from</span> <span class="tok-s">"@minecraft/server-ui"</span>;
+
+<span class="tok-k">const</span> form = <span class="tok-k">new</span> <span class="tok-f">ModalFormData</span>()
+  .<span class="tok-f">title</span>(<span class="tok-s">"§l§bWarp Menu"</span>)
+  .<span class="tok-f">dropdown</span>(<span class="tok-s">"Destination"</span>, [<span class="tok-s">"Spawn"</span>, <span class="tok-s">"Shop"</span>, <span class="tok-s">"Arena"</span>], <span class="tok-n">0</span>)
+  .<span class="tok-f">toggle</span>(<span class="tok-s">"Announce my arrival"</span>, <span class="tok-k">true</span>);</pre>
+      </div>
+
+      <div class="note">
+        <p><b>Both directions work.</b> The node graph and the code editor are two views of the same
+        project. Switch to Advanced to hand-tune a form, then <b>Convert to Tree Mode</b> to keep
+        editing visually — the blueprint reflects your code.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 9. IMAGES + MCADDON -->
+    <section class="chapter" id="9-images-textures--one-click-mcaddon-export">
+      <div class="chapter-head">
+        <span class="chapter-num">09</span>
+        <h2>Images, Textures &amp; One-Click <code>.mcaddon</code> Export</h2>
+        <a class="hash" href="#9-images-textures--one-click-mcaddon-export" aria-label="Link to this section">#</a>
+      </div>
+
+      <p>
+        Button icons and form headers need textures, and textures live in a <em>resource</em> pack —
+        not the behaviour pack. The editor handles both and stitches them together.
+      </p>
+
+      <h3>Adding images</h3>
+      <ol class="steps">
+        <li>Upload <code>.png</code> files with the picker, or drag &amp; drop them <b>anywhere</b> in the workspace.</li>
+        <li>A collapsible tray appears showing thumbnails of everything you added.</li>
+        <li>Assign an image to a <b>Button</b>'s icon in the Properties panel.</li>
+        <li>When images exist, <b>Generate</b> offers a <code>.mcaddon</code> alongside the plain scripts.</li>
+      </ol>
+
+      <h3>What the <code>.mcaddon</code> contains</h3>
+      <div class="codeblock">
+        <div class="bar"><span class="lang">archive</span><span class="file">MyProject.mcaddon</span>
+          <button class="copy-btn" type="button">📋 Copy</button></div>
+<pre class="ascii">MyProject.mcaddon
+├── BP/                          Behavior Pack
+│   ├── manifest.json            uuid + version + module + BP→RP dependency
+│   ├── pack_icon.png
+│   └── scripts/
+│       └── main.js              your generated script
+└── RP/                          Resource Pack
+    ├── manifest.json            matching header uuid referenced by BP
+    └── textures/
+        ├── ui_button_a.png
+        └── ui_button_b.png</pre>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>⬇ Download formats</h4>
+          <ul class="clean" style="font-size:13px">
+            <li><code>.dcui</code> — the project itself (re-importable)</li>
+            <li><code>main.js</code> — plain JavaScript</li>
+            <li><code>main.ts</code> — TypeScript with types</li>
+            <li><code>.mcaddon</code> — installable bundle (BP + RP)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>📋 Copy buttons</h4>
+          <p style="font-size:13px">The two big buttons in the Generate window — <b>Copy TypeScript</b> and <b>Copy JavaScript</b> — remain the final step for pasting straight into an existing behaviour pack.</p>
+        </div>
+      </div>
+
+      <div class="warn">
+        <p><b>Reminder the generator prints.</b> Bundled scripts require <b>Beta APIs</b> to be enabled
+        for the world in Minecraft — see the next chapter.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 10. INSTALL -->
+    <section class="chapter" id="10-installing-and-running-in-minecraft-bedrock">
+      <div class="chapter-head">
+        <span class="chapter-num">10</span>
+        <h2>Installing and Running in Minecraft Bedrock</h2>
+        <a class="hash" href="#10-installing-and-running-in-minecraft-bedrock" aria-label="Link to this section">#</a>
+      </div>
+
+      <h3>Option A — the <code>.mcaddon</code> (fastest)</h3>
+      <ol class="steps">
+        <li>Download <code>YourProject.mcaddon</code> from the Generate window.</li>
+        <li>Double-click / open the file — Minecraft imports it and shows both packs in your library.</li>
+        <li>Create or edit a world → <b>Behavior Packs</b> → activate your pack. The resource pack is pulled in automatically by the dependency.</li>
+        <li>In the same world settings, scroll to <b>Experiments</b> and switch on <b>Beta APIs</b>.</li>
+        <li>Play. Hold the trigger item (e.g. <code>minecraft:compass</code>) and crouch-use it to open your menu.</li>
+      </ol>
+
+      <h3>Option B — copy into an existing pack</h3>
+      <ol class="steps">
+        <li>Press <b>📋 Copy JavaScript</b> (or TypeScript, then compile it yourself).</li>
+        <li>Paste it into <code>behavior_pack/scripts/main.js</code>.</li>
+        <li>Make sure the pack's <code>manifest.json</code> declares a <code>script</code> module with
+          <code>entry</code> pointing at <code>scripts/main.js</code>, plus dependencies on
+          <code>@minecraft/server</code> and <code>@minecraft/server-ui</code>.</li>
+        <li>Enable <b>Beta APIs</b> in the world's Experiments and reload the world.</li>
+      </ol>
+
+      <div class="codeblock">
+        <div class="bar"><span class="lang">json</span><span class="file">BP/manifest.json</span>
+          <button class="copy-btn" type="button">📋 Copy</button></div>
+<pre>{
+  <span class="tok-f">"format_version"</span>: <span class="tok-n">2</span>,
+  <span class="tok-f">"header"</span>: {
+    <span class="tok-f">"name"</span>: <span class="tok-s">"My DCUI Menu"</span>,
+    <span class="tok-f">"description"</span>: <span class="tok-s">"Generated by DYNACROWN Visual Script UI Editor"</span>,
+    <span class="tok-f">"uuid"</span>: <span class="tok-s">"&lt;pack-uuid&gt;"</span>,
+    <span class="tok-f">"version"</span>: [<span class="tok-n">1</span>, <span class="tok-n">0</span>, <span class="tok-n">0</span>],
+    <span class="tok-f">"min_engine_version"</span>: [<span class="tok-n">1</span>, <span class="tok-n">20</span>, <span class="tok-n">0</span>]
+  },
+  <span class="tok-f">"modules"</span>: [
+    { <span class="tok-f">"type"</span>: <span class="tok-s">"script"</span>, <span class="tok-f">"language"</span>: <span class="tok-s">"javascript"</span>,
+      <span class="tok-f">"uuid"</span>: <span class="tok-s">"&lt;module-uuid&gt;"</span>, <span class="tok-f">"version"</span>: [<span class="tok-n">1</span>, <span class="tok-n">0</span>, <span class="tok-n">0</span>],
+      <span class="tok-f">"entry"</span>: <span class="tok-s">"scripts/main.js"</span> }
+  ],
+  <span class="tok-f">"dependencies"</span>: [
+    { <span class="tok-f">"module_name"</span>: <span class="tok-s">"@minecraft/server"</span>,    <span class="tok-f">"version"</span>: <span class="tok-s">"1.x"</span> },
+    { <span class="tok-f">"module_name"</span>: <span class="tok-s">"@minecraft/server-ui"</span>, <span class="tok-f">"version"</span>: <span class="tok-s">"1.x"</span> }
+  ]
+}</pre>
+      </div>
+
+      <div class="tip">
+        <p><b>Stable 1.x is the point.</b> Because the generator only emits positional-argument
+        signatures from the stable <code>@minecraft/server-ui</code> 1.x API, you do <em>not</em> need
+        experimental form APIs — only the <b>Beta APIs</b> experiment that unlocks scripting in general.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ 11. SETTINGS -->
+    <section class="chapter" id="11-settings-customization--keyboard-shortcuts">
+      <div class="chapter-head">
+        <span class="chapter-num">11</span>
+        <h2>Settings, Customization &amp; Keyboard Shortcuts</h2>
+        <a class="hash" href="#11-settings-customization--keyboard-shortcuts" aria-label="Link to this section">#</a>
+      </div>
+
+      <h3>Settings panel (home screen)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Setting</th><th>Options</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td>Font</td><td>Default · MINECRAFT · Italics · BOLD</td><td>MINECRAFT loads the Craftron pixel font with Monocraft as Unicode fallback — pixel-rendered, no anti-aliasing.</td></tr>
+            <tr><td>Theme</td><td>Default · Matrix · Minecraft</td><td>Recolours the whole workspace. <b>Minecraft</b> also enables a synthesized click SFX and swaps the homepage music for your theme song.</td></tr>
+            <tr><td>Saturation</td><td>Slider</td><td>Dials the neon category colours up or down — useful on washed-out phone screens.</td></tr>
+            <tr><td>Experience Mode</td><td>Tree ↔ Advanced</td><td>Tree is the visual blueprint editor; Advanced leaves only Code Editor, Preview Board and Game Output.</td></tr>
+            <tr><td>Preview Board background</td><td>Overworld · Nether · End · Server</td><td>Changes the backdrop behind the form simulator so you can check contrast.</td></tr>
+            <tr><td>Sound</td><td>On / Off</td><td>Homepage music and click SFX. Music stops automatically when you enter a project.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Keyboard shortcuts</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Keys</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>Del</kbd> / <kbd>Backspace</kbd></td><td>Delete the selected node or wire</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Undo</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>Redo</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>Duplicate / paste selection</td></tr>
+            <tr><td><kbd>Space</kbd> (hold)</td><td>Pan the canvas</td></tr>
+            <tr><td><kbd>P</kbd></td><td>Toggle the Live Preview bar</td></tr>
+            <tr><td>Mouse wheel / pinch</td><td>Zoom the canvas</td></tr>
+            <tr><td>Double-tap a wire</td><td>Delete that wire (touch devices)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Fonts &amp; attribution</h3>
+      <p>
+        The in-game font <em>Mojangles</em> is Mojang proprietary and not redistributable, so
+        Settings → Font → <b>MINECRAFT</b> uses <strong>“Minecraft” by Craftron Gaming</strong> — the
+        authentic fan-made 16px bitmap recreation (110 glyphs, <b>CC BY 4.0</b>, free for commercial
+        use). <strong>Monocraft</strong> (<b>SIL OFL-1.1</b>) is bundled as the Unicode fallback for
+        glyphs the pixel font lacks. Full attribution lives in
+        <code>fonts/ATTRIBUTION-Minecraft-Craftron.txt</code>.
+      </p>
+
+      <h3>Projects &amp; storage</h3>
+      <ul class="clean">
+        <li><b>Browser storage</b> (default) — autosaved to <code>localStorage</code>, shown as tiles on the home screen.</li>
+        <li><b>Device / internal folder</b> — File System Access API where available, OPFS elsewhere. You pick the folder when you press <b>+ New Project</b>.</li>
+        <li><b>Import / Export</b> — <code>.dcui</code> JSON, portable between devices and browsers.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================ 12. TROUBLESHOOTING -->
+    <section class="chapter" id="12-troubleshooting--best-practices">
+      <div class="chapter-head">
+        <span class="chapter-num">12</span>
+        <h2>Troubleshooting &amp; Best Practices</h2>
+        <a class="hash" href="#12-troubleshooting--best-practices" aria-label="Link to this section">#</a>
+      </div>
+
+      <h3>Common problems</h3>
+
+      <details class="faq">
+        <summary>My form never opens in-game</summary>
+        <div class="faq-body">
+          <p>Check, in order: (1) <b>Beta APIs</b> is enabled in the world's Experiments;
+          (2) the behaviour pack is <em>activated</em> for that world, not just imported;
+          (3) the trigger's <b>Item ID</b> matches exactly, including the <code>minecraft:</code>
+          namespace; (4) if the trigger is a crouch variant, you are actually sneaking when you use the
+          item. The Live Preview always fires the flow, so if it works there the wiring is fine and the
+          problem is in the world setup.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Scripts error with “module not found”</summary>
+        <div class="faq-body">
+          <p>Your <code>manifest.json</code> must declare dependencies on both
+          <code>@minecraft/server</code> and <code>@minecraft/server-ui</code>, and the
+          <code>modules[].entry</code> must point at <code>scripts/main.js</code>. If you exported
+          TypeScript, compile it to JS first — Bedrock does not run <code>.ts</code>.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Button icons show as missing / pink-black</summary>
+        <div class="faq-body">
+          <p>Icons live in the <b>resource pack</b>. Export a <code>.mcaddon</code> so the RP is bundled
+          and the BP→RP dependency is written for you, and make sure the RP is active in the world.
+          Textures must be <code>.png</code>.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Wrong values after submit (off-by-one)</summary>
+        <div class="faq-body">
+          <p><code>res.formValues</code> is indexed in <b>chain order</b>. Reordering controls on the
+          canvas changes the indices. Re-run the Live Preview after any reorder — the Game Output prints
+          each result name next to its value so you can confirm the mapping.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>I can’t drag from the palette on my phone</summary>
+        <div class="faq-body">
+          <p>Mobile browsers don't fire HTML5 drag events, so the editor uses a touch
+          <b>ghost-drag</b> that follows your finger. If it still misbehaves, just <b>tap</b> the
+          palette item — it drops at the canvas centre and you can drag it into place afterwards.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>My project disappeared</summary>
+        <div class="faq-body">
+          <p>Browser-storage projects live in <code>localStorage</code>, which is cleared when you wipe
+          site data or use a private window. Export a <code>.dcui</code> regularly, or choose
+          <b>Device / internal folder</b> storage when creating the project.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>The public live URL stopped working</summary>
+        <div class="faq-body">
+          <p>GitHub Pages cannot serve a <b>private</b> repository on the free plan. Either make the
+          repository public again, or run locally with <code>python3 -m http.server 8080</code> and open
+          <code>http://localhost:8080</code>.</p>
+        </div>
+      </details>
+
+      <h3>Best practices</h3>
+      <div class="grid-2">
+        <div class="card"><h4>🧱 One trigger, one job</h4><p style="font-size:13px">Split unrelated menus into separate triggers and forms instead of one giant modal. It keeps <code>formValues</code> indices stable and the canvas readable.</p></div>
+        <div class="card"><h4>🏷️ Name every result</h4><p style="font-size:13px">Set explicit <b>Result names</b> on inputs. <code>${targetY}</code> is self-documenting in commands; <code>formValues[3]</code> is not.</p></div>
+        <div class="card"><h4>📝 Document with notes</h4><p style="font-size:13px">Sticky notes travel with the project file — use them to record why a condition exists, not just what it does.</p></div>
+        <div class="card"><h4>▶ Preview before export</h4><p style="font-size:13px">Every flow should be exercised once in the simulator, including the cancel path and both condition branches.</p></div>
+        <div class="card"><h4>🧭 Keep menus shallow</h4><p style="font-size:13px">Two or three levels of <b>Open Form</b> pages is plenty. Add a Back button instead of chaining deeper.</p></div>
+        <div class="card"><h4>💾 Export <code>.dcui</code> often</h4><p style="font-size:13px">The project file is tiny. Keeping one next to your behaviour pack means you can regenerate after any Minecraft API change.</p></div>
+      </div>
+
+      <div class="tip">
+        <p><b>❤️ Support the project.</b> The <b>Support</b> button (toolbar, home screen and Settings)
+        links to a Selar “Show Love” tip at
+        <a href="https://selar.com/showlove/dynacrown" target="_blank" rel="noopener"><code>selar.com/showlove/dynacrown</code></a>.
+        It keeps the editor free and ad-free. <b>No user data is collected or sold</b> — everything
+        stays in the visitor's browser.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ footer -->
+    <footer class="footer">
+      <div>
+        <span class="heart">👑</span> <b>DYNACROWN Visual Script UI Editor</b> — tutorial &amp; manual.<br>
+        Free, ad-free, 100% client-side. Minecraft is a trademark of Mojang Studios / Microsoft; this
+        tool is not affiliated with or endorsed by them.
+      </div>
+      <div>
+        <a href="https://dynacrown09-ai.github.io/DCUI-Generator-/" target="_blank" rel="noopener">Live app</a> ·
+        <a href="https://dcui_t.pages.dev/" target="_blank" rel="noopener">Tutorial book</a> ·
+        <a href="https://github.com/dynacrown09-ai/DCUI-Generator-" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://selar.com/showlove/dynacrown" target="_blank" rel="noopener">Support</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ===================================================== right rail -->
+  <aside class="rail" aria-label="On this page and quick links">
+    <div class="rail-card">
+      <h5>🚀 Run it now</h5>
+      <p>Open the editor in a new tab — nothing to install, nothing leaves your browser.</p>
+      <a class="btn gold" href="https://dynacrown09-ai.github.io/DCUI-Generator-/" target="_blank" rel="noopener">Launch the Editor</a>
+    </div>
+
+    <h5>On this page</h5>
+    <ul id="railList">
+      <li><a href="#2-interface-layout-the-5-core-zones">The 5 core zones</a></li>
+      <li><a href="#4-wiring-engine--port-rules">Port colours &amp; fan-out</a></li>
+      <li><a href="#5-complete-node-reference">All 30 nodes</a></li>
+      <li><a href="#7-multi-page-navigation-open-form-node">Page navigation</a></li>
+      <li><a href="#9-images-textures--one-click-mcaddon-export">.mcaddon layout</a></li>
+      <li><a href="#10-installing-and-running-in-minecraft-bedrock">Install in Bedrock</a></li>
+      <li><a href="#11-settings-customization--keyboard-shortcuts">Shortcuts</a></li>
+      <li><a href="#12-troubleshooting--best-practices">Troubleshooting</a></li>
+    </ul>
+
+    <div class="rail-card">
+      <h5>💻 Run locally</h5>
+      <div class="codeblock" style="margin:0">
+        <div class="bar"><span class="lang">bash</span><button class="copy-btn" type="button">📋</button></div>
+<pre>python3 -m http.server 8080</pre>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+
+<script src="app.js"></script>
+</body>
+</html>

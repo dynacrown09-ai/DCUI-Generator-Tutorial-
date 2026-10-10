@@ -1,0 +1,14 @@
+{
+  "name": "DYNACROWN Visual Script UI Editor — Tutorial & Manual",
+  "short_name": "DCUI Tutorial",
+  "description": "The full tutorial and developer manual for the DYNACROWN Visual Script UI Editor — design Minecraft Bedrock addon Script UI visually on a blueprint canvas and export TypeScript, JavaScript or .mcaddon.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#0b1220",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
